@@ -1,0 +1,28 @@
+{
+  "name": "gulp-mode",
+  "version": "1.0.0",
+  "description": "A gulp plugin for identifying biuld mode.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CODEYA/node-gulp-mode.git"
+  },
+  "keywords": [
+    "gulp",
+    "NODE_ENV",
+    "process.env.NODE_ENV",
+    "production",
+    "development"
+  ],
+  "author": "CODEYA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CODEYA/node-gulp-mode/issues"
+  },
+  "dependencies": {
+    "gulp-util": "^3.0.6"
+  }
+}
