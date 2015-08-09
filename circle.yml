@@ -1,0 +1,6 @@
+machine:
+  timezone: Asia/Tokyo
+dependencies:
+  pre:
+    - npm install -g gulp
+    - npm install
