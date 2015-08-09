@@ -4,7 +4,7 @@
   "description": "A gulp plugin for identifying biuld mode.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test; cat ./test/junitresults.xml"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,11 @@
   },
   "dependencies": {
     "gulp-util": "^3.0.6"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jasmine": "^2.0.1",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "jasmine-reporters": "^2.0.7"
   }
 }
