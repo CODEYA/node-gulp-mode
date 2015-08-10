@@ -30,6 +30,18 @@ gulp.task('default', function() {
 });
 ```
 
+To specify mode
+
+```bash
+% gulp --production
+```
+
+or
+
+```bash
+% NODE_ENV=production gulp
+```
+
 # API
 
 ## Construct
