@@ -78,8 +78,25 @@ mode.<mode name>(callback)
 
 Example:
 
-```JavaScript
+```javascript
 gulp.src('src/*.js')
     .pipe(mode.production(uglify()))
     .pipe(gulp.dest('dist'));
+```
+
+## Get current mode
+
+To get current mode as boolean
+
+```javascript
+mode.<mode name>();
+```
+
+Example:
+
+```javascript
+var isProduction = mode.production();
+if(isProduction) {
+  console.log("Production mode");
+}
 ```
