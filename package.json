@@ -1,6 +1,6 @@
 {
   "name": "gulp-mode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A gulp plugin for identifying biuld mode.",
   "main": "index.js",
   "scripts": {
