@@ -4,3 +4,6 @@ dependencies:
   pre:
     - npm install -g gulp
     - npm install
+test:
+  override:
+    - npm test
