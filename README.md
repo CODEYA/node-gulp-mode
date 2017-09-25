@@ -1,6 +1,6 @@
 # node-gulp-mode
 
-A gulp plugin for identifying biuld mode.
+A gulp plugin for identifying build mode.
 
 [![Circle CI](https://circleci.com/gh/CODEYA/node-gulp-mode/tree/master.svg?style=svg)](https://circleci.com/gh/CODEYA/node-gulp-mode/tree/master)
 [![npm version](https://badge.fury.io/js/gulp-mode.svg)](http://badge.fury.io/js/gulp-mode)
@@ -78,8 +78,25 @@ mode.<mode name>(callback)
 
 Example:
 
-```JavaScript
+```javascript
 gulp.src('src/*.js')
     .pipe(mode.production(uglify()))
     .pipe(gulp.dest('dist'));
+```
+
+## Get current mode
+
+To get current mode as boolean
+
+```javascript
+mode.<mode name>();
+```
+
+Example:
+
+```javascript
+var isProduction = mode.production();
+if(isProduction) {
+  console.log("Production mode");
+}
 ```

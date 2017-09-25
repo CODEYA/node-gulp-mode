@@ -1,6 +1,6 @@
 {
   "name": "gulp-mode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A gulp plugin for identifying biuld mode.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/CODEYA/node-gulp-mode.git"
+    "url": "github.com:CODEYA/node-gulp-mode.git"
   },
   "keywords": [
     "gulp",
@@ -23,12 +23,12 @@
     "url": "https://github.com/CODEYA/node-gulp-mode/issues"
   },
   "dependencies": {
-    "gulp-util": "^3.0.6"
+    "gulp-util": "^3.0.8"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-jasmine": "^2.0.1",
-    "gulp-load-plugins": "^1.0.0-rc.1",
-    "jasmine-reporters": "^2.0.7"
+    "gulp": "^3.9.1",
+    "gulp-jasmine": "^2.4.2",
+    "gulp-load-plugins": "^1.5.0",
+    "jasmine-reporters": "^2.2.1"
   }
 }
