@@ -29,7 +29,36 @@ module.exports = function(options, env, argv) {
   }
   return methods;
 }
-
+/**
+ * Returns whether targetMode matches or not
+ *
+ * @param {map} env - process.env
+ * @param {array} argv - process.argv
+ * @param {array} allModes - options.modes
+ * @param {string} targetMode - options.mode[i]
+ * @param {boolean} isDefaultMode - true if targetMode == options.default
+ */
+function matchMode(env, argv, allModes, targetMode, isDefaultMode) {
+  // with CLI arguments (`gulp --<targetMode>`)
+  if(argv.indexOf("--" + targetMode) >= 0) {
+    return true;
+  // with NODE_ENV (`NODE_ENV=<targetMode> gulp`)
+  } else if(env.NODE_ENV == targetMode) {
+    return true;
+  // default mode (targetMode == defaultMode)
+  } else if(isDefaultMode) {
+    var modeNotFound = false; // true if both NODE_ENV and process.argv are not specified.
+    if(env.NODE_ENV == null) { // without NODE_ENV
+      modeNotFound = true;
+      for(var i = 0; i < allModes.length; i++) { // without CLI arguments.
+        modeNotFound &= (argv.indexOf("--" + allModes[i]) < 0);
+      }
+    }
+    return modeNotFound;
+  } else {
+    return false;
+  }
+}
 /**
  * Create plugin method for targetMode
  *
@@ -41,27 +70,10 @@ module.exports = function(options, env, argv) {
  */
 function createMethod(env, argv, allModes, targetMode, isDefaultMode) {
   return function(callback) {
-    if(typeof callback != 'object') {
-      throw new gutil.PluginError('gulp-mode', '"callback" argument must be a object.');
-    }
-    // with CLI arguments (`gulp --<targetMode>`)
-    if(argv.indexOf("--" + targetMode) >= 0) {
-      return callback;
-    // with NODE_ENV (`NODE_ENV=<targetMode> gulp`)
-    } else if(env.NODE_ENV == targetMode) {
-      return callback;
-    // default mode (targetMode == defaultMode)
-    } else if(isDefaultMode) {
-      var modeNotFound = false; // true if both NODE_ENV and process.argv are not specified.
-      if(env.NODE_ENV == null) { // without NODE_ENV
-        modeNotFound = true;
-        for(var i = 0; i < allModes.length; i++) { // without CLI arguments.
-          modeNotFound &= (argv.indexOf("--" + allModes[i]) < 0);
-        }
-      }
-      return modeNotFound ? callback : gutil.noop();
+    if(callback === undefined) {
+      return matchMode(env, argv, allModes, targetMode, isDefaultMode);
     } else {
-      return gutil.noop();
+      return matchMode(env, argv, allModes, targetMode, isDefaultMode) ? callback : gutil.noop();
     }
   };
 }
