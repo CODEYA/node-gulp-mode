@@ -1,6 +1,6 @@
-'use strict'
-var c = require('ansi-colors');
-var flog = require('fancy-log');
+"use strict"
+var c = require("ansi-colors");
+var flog = require("fancy-log");
 var noop = require("gulp-noop");
 
 /**
