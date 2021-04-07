@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var reporters = require('jasmine-reporters');
 
-gulp.task('test', function () {
+gulp.task('test', function (cb) {
   gulp.src('test/*.spec.js')
       .pipe($.jasmine({
         verbose: true,
@@ -10,6 +10,7 @@ gulp.task('test', function () {
           savePath: './test',
         })
       }));
+  cb();
 });
 
-gulp.task('default', ['test']);
+gulp.task('default', gulp.task('test'));

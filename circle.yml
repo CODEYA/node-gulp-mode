@@ -1,9 +1,21 @@
-machine:
-  timezone: Asia/Tokyo
-dependencies:
-  pre:
-    - npm install -g gulp
-    - npm install
-test:
-  override:
-    - npm test
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: node:15.11.0
+    steps:
+      - checkout
+      - run:
+          name: System information
+          command: |
+            echo "Node $(node -v)"
+            echo "Yarn v$(yarn --version)"
+      - run:
+          name: Install gulp
+          command: npm install -g gulp
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Test
+          command: npm test

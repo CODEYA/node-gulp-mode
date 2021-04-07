@@ -1,5 +1,7 @@
-'use strict'
-var gutil = require('gulp-util');
+"use strict"
+var c = require("ansi-colors");
+var flog = require("fancy-log");
+var noop = require("gulp-noop");
 
 /**
  * Plugin
@@ -17,8 +19,8 @@ module.exports = function(options, env, argv) {
   var verbose = options.verbose || false;
 
   if(verbose) {
-    gutil.log(gutil.colors.red("[gulp-mode]") + gutil.colors.cyan(" NODE_ENV : " + env.NODE_ENV));
-    gutil.log(gutil.colors.red("[gulp-mode]") + gutil.colors.cyan(" CLI arguments : " + argv));
+    flog(c.red("[gulp-mode]") + c.cyan(" NODE_ENV : " + env.NODE_ENV));
+    flog(c.red("[gulp-mode]") + c.cyan(" CLI arguments : " + argv));
   }
 
   // create plugin methods
@@ -73,7 +75,7 @@ function createMethod(env, argv, allModes, targetMode, isDefaultMode) {
     if(callback === undefined) {
       return matchMode(env, argv, allModes, targetMode, isDefaultMode);
     } else {
-      return matchMode(env, argv, allModes, targetMode, isDefaultMode) ? callback : gutil.noop();
+      return matchMode(env, argv, allModes, targetMode, isDefaultMode) ? callback : noop();
     }
   };
 }
